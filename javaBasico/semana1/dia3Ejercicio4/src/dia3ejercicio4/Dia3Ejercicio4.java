@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 package dia3ejercicio4;
 
 import java.util.Scanner;
@@ -12,70 +8,154 @@ import java.util.Scanner;
  */
 public class Dia3Ejercicio4 {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
         // TODO code application logic here
-         Scanner scn = new Scanner(System.in);
+        Scanner scn = new Scanner(System.in);
 
-        char[][] silla = new char[5][5];
-//char silla[][]  = new char[2][2];
-//        silla[0][0] = 'O';
-//        silla[0][1] = 'O';
-//        silla[1][0] = 'O';
-//        silla[1][1] = 'O';
-//        silla[2][0] = 'O';
-//        silla[0][2] = 'O';
-//        silla[3][0] = 'O';
-//        silla[0][3] = 'O';
-//        silla[4][0] = 'O';
-//        silla[0][4] = 'O';
-    
- 
-
+        char[][] sillas = new char[5][5];
         boolean bandera = false;
-//String seatOn = "O";
+        int fila = 0;
+        int col = 0;
+        int silla;
+        String texto;
+        boolean estaOk = false;
 
-        for (int fila = 0; fila < 2; fila++) {
-            for (int col = 0; col < 2; col++) {
-                //silla.length[fila][col]='O';
-                //System.out.print(" Fila: " + fila + " Columna:" + col);
-                //silla[fila][col] = scn.nextInt();
-                System.out.println("Ocupación del teatro//COMPRAR TICKET \n" + silla[0][0] + silla[0][1] + "\n"+  silla[1][0] + silla[1][1]+ silla[2][0]+silla[0][2]+silla[3][0]+silla[0][3]+silla[4][0]+silla[0][4]);
+        for (int f = 0; f < 5; f++) {
+            for (int c = 0; c < 5; c++) {
+                sillas[f][c] = 'O';
 
-                if (silla[fila][col] != 'X') {
-                    System.out.println("Inserte número de fila:");
-                    fila = scn.nextInt();
-                    System.out.println("Inserte número de columna:");
-                    col = scn.nextInt();
-                    if (silla[fila][col] != 'X') {
+            }
+        }
 
-                        System.out.println("\n Introduzca X para su compra: ");
-                        silla[fila][col] = scn.next().charAt(0);
-                    } else {
-                        System.out.println("Asiento ocupado");
+        System.out.println("Bienvenidos al sistema de reservas del Teatro Hack a Boss");
+        while (bandera != true) {
+            System.out.print("Ingrese fila y asiento a reservar\n");
+
+            for (int f = 0; f < 5; f++) {
+                for (int c = 0; c < 5; c++) {
+
+                    //System.out.print("[" + sillas[f][c] + "]");
+                }
+                System.out.println("");
+
+            }
+
+            while (bandera != true) {
+
+//                if (fila <=9 && fila>=0 ) {
+//                    if (col <=9 && col>=0) {
+//                        estaOk=true;
+//                        
+//                    }else{
+//                        System.out.println("Asiento fila ocupado");
+//                    }
+           
+//                }else{
+//                
+//                        System.out.println("Asiento columna ocupado");
+//                }
+                for (int f = 0; f < 5; f++) {
+                    for (int c = 0; c < 5; c++) {
+
+                       System.out.print("[" + sillas[f][c] + "]");
                     }
+                    System.out.println("");
+
+                }
+
+                System.out.print("\nLa filas debe ser entre (0-4 ):");
+                fila = scn.nextInt();
+                System.out.println("\nEl asiento debe ser entre (0-4):");
+                silla = scn.nextInt();
+
+                if (sillas[fila][silla] == 'O') {
+                    sillas[fila][silla] = 'X';
+                    System.out.println("El asiento no esta disponible. Pruebe a reservar otro asiento");
+
+                } else {
+
+                    System.out.println("El asiento fue reservado con exito.Disfrute de la obra !!!");
+                }
+
+                System.out.println("Deseas seguir realizando alguna compra más: ¿ S/N ?");
+                texto = scn.next();
+
+                if (texto.equalsIgnoreCase("N")) {
+                    bandera = true;
 
                 }
 
             }
 
-            System.out.println();
-
         }
-        // Recorrido/Muestra de una matriz
-        System.out.println("Ocupación del teatro ");
-        for (int fila = 0; fila < 2; fila++) {
-            for (int col = 0; col < 2; col++) {
-                System.out.println("TICKET \n" + silla[0][0] + silla[0][1] + "\n" + silla[1][0] + silla[1][1]);
-            }
-            System.out.println();
-
-        }
-
-
-        
     }
-    
 }
+
+//////////////////////////solución//////////////////////
+//
+//package sistemateatro;
+//
+//import java.util.Scanner;
+//
+///**
+// *
+// * @author Luisina
+// */
+//public class SistemaTeatro {
+//
+//    public static void main(String[] args) {
+//        
+//        String asientos [][] = new String [5][5];
+//        boolean bandera = false;
+//        Scanner teclado = new Scanner (System.in);
+//        int fila, asiento;
+//        String respuesta;
+//        
+//        System.out.println("-----------Bienvenido al sistema de teatros-----------");
+//        
+//        //rellenamos la matriz con O porque está vacía
+//        for (int f=0;f<5;f++) {
+//            for (int c=0;c<5;c++) {
+//                asientos[f][c]="O";
+//            }
+//        }
+//        
+//        while (bandera!=true) {
+//            
+//            System.out.println("Ingrese el número de fila y asiento a reservar");
+//            System.out.print("Fila (entre 0 y 4): ");
+//            fila = teclado.nextInt();
+//            System.out.println(fila);
+//            
+//            System.out.print("Asiento (entre 0 y 4): ");
+//            asiento = teclado.nextInt();
+//            System.out.println(asiento);
+//        
+//            if (asientos[fila][asiento].equals("O")) {
+//                asientos[fila][asiento] = "X";
+//                System.out.println("Asiento reservado correctamente");
+//                
+//                System.out.println("¿Desea finalizar las reservas? S: Si. Cualquier otra letra:  No ");
+//                respuesta = teclado.next();
+//                    
+//                //equalsIgnoreCase ignora si la letra ingresada es mayúscula o minúscula, le importa el caracter
+//                    if (respuesta.equalsIgnoreCase("S"))  {
+//                        bandera = true;
+//                    }
+//            }
+//           else {
+//               System.out.println("Asiento ocupado, seleccione otro");
+//           }
+//                
+//                
+//            }
+//            
+//            
+//            
+//        }
+//        
+//        
+//
+//    }
+//
+//   
